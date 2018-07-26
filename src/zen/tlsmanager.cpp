@@ -180,7 +180,7 @@ SSL_CTX* TLSManager::initCtx(
 
         SSL_CTX_set_verify(tlsCtx, SSL_VERIFY_PEER, tlsCertVerificationCallback);
 
-        if (SSL_CTX_use_certificate_file(tlsCtx, certificateFile.string().c_str(), SSL_FILETYPE_PEM) > 0) {
+        if (SSL_CTX_use_certificate_chain_file(tlsCtx, certificateFile.string().c_str()) > 0) {
             if (SSL_CTX_use_PrivateKey_file(tlsCtx, privateKeyFile.string().c_str(), SSL_FILETYPE_PEM) > 0) {
                 if (SSL_CTX_check_private_key(tlsCtx))
                     bInitialized = true;
